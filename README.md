@@ -1,7 +1,7 @@
 # codefundo-WildHunt
-Team members
-Siddharth Singh
-Chetan Agarwal
+Team members:<br>
+Siddharth Singh<br>
+Chetan Agarwal<br>
 Harsh Prakash Gupta
 
 Idea-
