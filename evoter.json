@@ -51,9 +51,8 @@
             "Type": {
               "Name": "voters[i].name"
             }
-          },
-        
-      
+          }        
+      ],
         "Constructor": {
           "Parameters": [{
           }]
