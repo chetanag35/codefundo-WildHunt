@@ -20,7 +20,7 @@ contract evoter {
     uint256 voterId;
     uint256 const=1000*60*60*24*365;
     string str;
-    uint256 i;
+    uint256 public i;
     constructor() public{
         no_of_voters=0;
         voterId=0;
