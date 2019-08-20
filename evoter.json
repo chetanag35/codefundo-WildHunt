@@ -43,19 +43,10 @@
             "Type": {
               "Name": "Voter"
             }
-          },
-          {
-            "Name": "voters[i].name",
-            "DisplayName": "Voter name",
-            "Description": "...",
-            "Type": {
-              "Name": "voters[i].name"
-            }
-          }        
-      ],
+          }
+        ],
         "Constructor": {
-          "Parameters": [{
-          }]
+          "Parameters": []
         },
         "Functions": [
           {
@@ -68,7 +59,7 @@
                 "Description": "voterid",
                 "DisplayName": "voterid",
                 "Type": {
-                  "Name": "uint256"
+                  "Name": "int"
                 }
               }
             ]
@@ -91,7 +82,7 @@
             "Description": "aadhar no",
             "DisplayName": "aadhar number",
             "Type": {
-              "Name": "uint256"
+              "Name": "int"
             }
           
       },
@@ -126,7 +117,7 @@
     "Description": "birth_year",
     "DisplayName": "birth year",
     "Type": {
-      "Name": "uint256"
+      "Name": "int"
     }
   
 }]
@@ -140,7 +131,7 @@
                 "Description": "voterid",
                 "DisplayName": "voterid",
                 "Type": {
-                  "Name": "uint256"
+                  "Name": "int"
                 }
               }]
           }
@@ -182,7 +173,7 @@
               "AllowedInstanceRoles": ["ElectionCommission"],
               "DisplayName": "update voter",
               "Function": "remVoter",
-              "NextStates": ["Addvoter"]
+              "NextStates": ["Updatevoterstatus"]
             }
           ]
           },
@@ -198,19 +189,19 @@
                     "AllowedInstanceRoles": ["ElectionCommission"],
                     "DisplayName": "addVoter",
                     "Function": "addVoter",
-                    "NextStates": ["AddVoter"]
+                    "NextStates": ["Addvoter"]
                   },
                   {
                     "AllowedRoles": ["ElectionCommission"],
                     "AllowedInstanceRoles": ["ElectionCommission"],
                     "DisplayName": "update voter",
                     "Function": "remVoter",
-                    "NextStates": ["Addvoter"]
+                    "NextStates": ["Updatevoterstatus"]
                   }
             ]
           },
           {
-            "Name": "remVoter",
+            "Name": "Updatevoterstatus",
             "DisplayName": "Remove Voter ",
             "Description": "Remove voter",
             "PercentComplete": 100,
@@ -221,7 +212,7 @@
                     "AllowedInstanceRoles": ["ElectionCommission"],
                     "DisplayName": "addVoter",
                     "Function": "addVoter",
-                    "NextStates": ["AddVoter"]
+                    "NextStates": ["Addvoter"]
                   },
                   {
                     "AllowedRoles": ["Voter"],
