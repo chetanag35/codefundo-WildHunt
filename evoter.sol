@@ -13,6 +13,7 @@ contract voter {
         int age;
     }
     enum currentState {Initiate, Generate, Display, Addvoter, Updatevoterstatus}
+    currentState public cstate;
     address public Voter;
     voterDetails[] public voters;
     uint256 no_of_voters;
@@ -27,7 +28,7 @@ contract voter {
             if(voters[i].voterId==voterId){
             if(voters[i].isAlive&&voters[i].age>=18)
             {
-                //display voter card details
+                str="valid voter"
             }
             else if(voters[i].isAlive&&voters[i].age<18)
             {
@@ -38,6 +39,7 @@ contract voter {
             }
             }
         }
+        cstate=currentState.Generate;
     }
     function addVoter (string name, uint64 adhno, string father_name, string Address, bool isAlive, string Gender, string DoB){
         no_of_voters++;
@@ -53,7 +55,7 @@ contract voter {
         newVoter.voterId=voterId;
         //newVoter.age=//code for age calculation
         voters.push(newVoter);
-
+        cstate=currentState.Addvoter;
     }
     function remVoter (uint256 voterId) public{
         for(int i=0;i<no_of_voters;i++){
@@ -62,5 +64,6 @@ contract voter {
                 break;
             }
         }
+        cstate=currentState.Updatevoterstatus;
     }
 }
