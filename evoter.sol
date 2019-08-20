@@ -1,16 +1,16 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.1;
 //import "https://github.com/pipermerriam/ethereum-datetime/blob/master/contracts/DateTime.sol";
-contract voter {
+contract evoter {
     struct voterDetails{
         string name;
-        uint64 adhno;
+        uint256 adhno;
         string father_name;
         string Address;
         bool isAlive;
         string gender;
-        int birth_year;   
-        int voterId;
-        int age;
+        uint256 birth_year;   
+        uint256 voterId;
+        uint256 age;
     }
     enum currentState {Initiate, Generate, Display, Addvoter, Updatevoterstatus}
     currentState public cstate;
@@ -23,26 +23,27 @@ contract voter {
     constructor() public{
         no_of_voters=0;
         voterId=0;
+        cstate=currentState.Initiate;
     }
-    function generate (int voterId) public{
-        for(int i=0;i<no_of_voters;i++){
-            if(voters[i].voterId==voterId){
+    function generate (uint256 voterid) public{
+        for(uint256 i=0;i<no_of_voters;i++){
+            if(voters[i].voterId==voterid){
             if(voters[i].isAlive&&voters[i].age>=18)
             {
-                str="valid voter"
+                str="valid voter";
             }
             else if(voters[i].isAlive&&voters[i].age<18)
             {
                 str="Underage Voter";
             }
-            else if(!voter[i].isAlive){
+            else if(!voters[i].isAlive){
                 str="Expired Voter";
             }
             }
         }
         cstate=currentState.Generate;
     }
-    function addVoter (string name, uint64 adhno, string father_name, string Address, bool isAlive, string Gender, int birth_year){
+    function addVoter (string memory name, uint256 adhno, string memory father_name, string memory Address, string memory Gender, uint256 birth_year) public {
         no_of_voters++;
         voterId++;
         voterDetails memory newVoter;
@@ -51,16 +52,16 @@ contract voter {
         newVoter.father_name=father_name;
         newVoter.Address=Address;
         newVoter.isAlive=true;
-        newVoter.Gender=Gender;
+        newVoter.gender=Gender;
         newVoter.birth_year=birth_year;
         newVoter.voterId=voterId;
         newVoter.age=now/(const)-(birth_year-1970);                                                                         //code for age calculation
         voters.push(newVoter);
         cstate=currentState.Addvoter;
     }
-    function remVoter (uint256 voterId) public{
-        for(int i=0;i<no_of_voters;i++){
-            if(voters[i].voterId==voterId){
+    function remVoter (uint256 voterid) public{
+        for(uint256 i=0;i<no_of_voters;i++){
+            if(voters[i].voterId==voterid){
                 voters[i].isAlive=false;
                 break;
             }
