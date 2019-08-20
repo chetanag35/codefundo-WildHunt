@@ -17,12 +17,27 @@ contract voter {
     voterDetails[] public voters;
     uint256 no_of_voters;
     uint256 voterId;
+    string str;
     constructor() public{
         no_of_voters=0;
         voterId=0;
     }
     function generate (int voterId) public{
-
+        for(int i=0;i<no_of_voters;i++){
+            if(voters[i].voterId==voterId){
+            if(voters[i].isAlive&&voters[i].age>=18)
+            {
+                //display voter card details
+            }
+            else if(voters[i].isAlive&&voters[i].age<18)
+            {
+                str="Underage Voter";
+            }
+            else if(!voter[i].isAlive){
+                str="Expired Voter";
+            }
+            }
+        }
     }
     function addVoter (string name, uint64 adhno, string father_name, string Address, bool isAlive, string Gender, string DoB){
         no_of_voters++;
@@ -42,7 +57,7 @@ contract voter {
     }
     function remVoter (uint256 voterId) public{
         for(int i=0;i<no_of_voters;i++){
-            if(voters[i].voterId=voterId){
+            if(voters[i].voterId==voterId){
                 voters[i].isAlive=false;
                 break;
             }
