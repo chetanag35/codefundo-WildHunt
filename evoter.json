@@ -29,19 +29,11 @@
             }
           },
           {
-            "Name": "ElectionCommission",
-            "DisplayName": "Election Commission",
+            "Name": "str",
+            "DisplayName": "str",
             "Description": "...",
             "Type": {
-              "Name": "ElectionCommission"
-            }
-          },
-          {
-            "Name": "Voter",
-            "DisplayName": "Voter",
-            "Description": "...",
-            "Type": {
-              "Name": "Voter"
+              "Name": "string"
             }
           }
         ],
