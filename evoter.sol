@@ -16,10 +16,10 @@ contract evoter {
     currentState public cstate;
     address public Voter;
     voterDetails[] public voters;
-    uint256 no_of_voters;
-    uint256 voterId;
-    uint256 const=1000*60*60*24*365;
-    string str;
+    uint256 public no_of_voters;
+    uint256 public voterId;
+    uint256 public const=1000*60*60*24*365;
+    string public str;
     uint256 public i;
     constructor() public{
         no_of_voters=0;
