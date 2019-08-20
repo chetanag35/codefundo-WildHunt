@@ -1,0 +1,239 @@
+{
+    "ApplicationName": "evoter",
+    "DisplayName": "evoter",
+    "Description": "Allows voters to generate their evoter card and allows authorities to remove a voter form roll",
+    "ApplicationRoles": [
+      {
+        "Name": "ElectionCommission",
+        "Description": "Organisation which administers the election process."
+      },
+      {
+        "Name": "Voter",
+        "Description": "User who can vote."
+      }
+    ],
+    "Workflows": [
+      {
+        "Name": "evoter",
+        "DisplayName": "evoter",
+        "Description": "description.....",
+        "Initiators": [ "ElectionCommission" ],
+        "StartState":  "Initiate",
+        "Properties": [
+          {
+            "Name": "State",
+            "DisplayName": "State",
+            "Description": "Holds the state of the contract",
+            "Type": {
+              "Name": "state"
+            }
+          },
+          {
+            "Name": "ElectionCommission",
+            "DisplayName": "Election Commission",
+            "Description": "...",
+            "Type": {
+              "Name": "ElectionCommission"
+            }
+          },
+          {
+            "Name": "Voter",
+            "DisplayName": "Voter",
+            "Description": "...",
+            "Type": {
+              "Name": "Voter"
+            }
+          },
+          {
+            "Name": "voters[i].name",
+            "DisplayName": "Voter name",
+            "Description": "...",
+            "Type": {
+              "Name": "voters[i].name"
+            }
+          },
+        
+      
+        "Constructor": {
+          "Parameters": [{
+          }]
+        },
+        "Functions": [
+          {
+            "Name": "generate",
+            "DisplayName": "generate",
+            "Description": "generating",
+            "Parameters": [
+              {
+                "Name": "voterid",
+                "Description": "voterid",
+                "DisplayName": "voterid",
+                "Type": {
+                  "Name": "uint256"
+                }
+              }
+            ]
+          },
+          {
+            "Name": "addVoter",
+            "DisplayName": "addVoter",
+            "Description": "addvoter",
+            "Parameters": [{
+                "Name": "name",
+                "Description": "name",
+                "DisplayName": "name",
+                "Type": {
+                  "Name": "string"
+                }
+              
+          },
+          {
+            "Name": "adhno",
+            "Description": "aadhar no",
+            "DisplayName": "aadhar number",
+            "Type": {
+              "Name": "uint256"
+            }
+          
+      },
+      {
+        "Name": "father_name",
+        "Description": "father name",
+        "DisplayName": "father name",
+        "Type": {
+          "Name": "string"
+        }
+      
+  },
+  {
+    "Name": "Address",
+    "Description": "address",
+    "DisplayName": "address",
+    "Type": {
+      "Name": "string"
+    }
+  
+},
+{
+    "Name": "Gender",
+    "Description": "gender",
+    "DisplayName": "gender",
+    "Type": {
+      "Name": "string"
+    }
+  
+},{
+    "Name": "birth_year",
+    "Description": "birth_year",
+    "DisplayName": "birth year",
+    "Type": {
+      "Name": "uint256"
+    }
+  
+}]
+          },
+          {
+            "Name": "remVoter",
+            "DisplayName": "remove voter",
+            "Description": "remove voter",
+            "Parameters": [{
+                "Name": "voterid",
+                "Description": "voterid",
+                "DisplayName": "voterid",
+                "Type": {
+                  "Name": "uint256"
+                }
+              }]
+          }
+         
+        ],
+        "States": [
+          {
+            "Name": "Initiate",
+            "DisplayName": "Initiate",
+            "Description": "Initiate",
+            "PercentComplete": 20,
+            "Style": "Success",
+            "Transitions": [
+              {
+                "AllowedRoles": ["ElectionCommission"],
+                "AllowedInstanceRoles": ["ElectionCommission"],
+                "DisplayName": "Add voter",
+                "Function": "addVoter",
+                "NextStates": ["Addvoter"]
+              }
+            ]
+          },
+          {
+            "Name": "Addvoter",
+            "DisplayName": "add Voter",
+            "Description": "add voter",
+            "PercentComplete": 40,
+            "Style": "Success",
+            "Transitions": [
+              {
+              "AllowedRoles": ["Voter"],
+              "AllowedInstanceRoles": ["Voter"],
+              "DisplayName": "generate",
+              "Function": "generate",
+              "NextStates": ["Generate"]
+            },
+            {
+              "AllowedRoles": ["ElectionCommission"],
+              "AllowedInstanceRoles": ["ElectionCommission"],
+              "DisplayName": "update voter",
+              "Function": "remVoter",
+              "NextStates": ["Addvoter"]
+            }
+          ]
+          },
+          {
+            "Name": "Generate",
+            "DisplayName": "generate ",
+            "Description": "generate voter id",
+            "PercentComplete": 100,
+            "Style": "Success",
+            "Transitions": [
+                {
+                    "AllowedRoles": ["ElectionCommission"],
+                    "AllowedInstanceRoles": ["ElectionCommission"],
+                    "DisplayName": "addVoter",
+                    "Function": "addVoter",
+                    "NextStates": ["AddVoter"]
+                  },
+                  {
+                    "AllowedRoles": ["ElectionCommission"],
+                    "AllowedInstanceRoles": ["ElectionCommission"],
+                    "DisplayName": "update voter",
+                    "Function": "remVoter",
+                    "NextStates": ["Addvoter"]
+                  }
+            ]
+          },
+          {
+            "Name": "remVoter",
+            "DisplayName": "Remove Voter ",
+            "Description": "Remove voter",
+            "PercentComplete": 100,
+            "Style": "Success",
+            "Transitions": [
+                {
+                    "AllowedRoles": ["ElectionCommission"],
+                    "AllowedInstanceRoles": ["ElectionCommission"],
+                    "DisplayName": "addVoter",
+                    "Function": "addVoter",
+                    "NextStates": ["AddVoter"]
+                  },
+                  {
+                    "AllowedRoles": ["Voter"],
+                    "AllowedInstanceRoles": ["Voter"],
+                    "DisplayName": "generate voter",
+                    "Function": "generate",
+                    "NextStates": ["Generate"]
+                  }
+            ]
+          }
+        ]
+      }
+    ]   
+  }
