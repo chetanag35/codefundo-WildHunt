@@ -161,29 +161,6 @@
             ]
           },
           {
-            "Name": "Addvoter",
-            "DisplayName": "add Voter",
-            "Description": "add voter",
-            "PercentComplete": 100,
-            "Style": "Success",
-            "Transitions": [
-              {
-              "AllowedRoles": ["Voter"],
-              "AllowedInstanceRoles": [],
-              "DisplayName": "generate",
-              "Function": "generate",
-              "NextStates": ["Generate"]
-            },
-            {
-              "AllowedRoles": [],
-              "AllowedInstanceRoles": ["ElectionCommission"],
-              "DisplayName": "update voter",
-              "Function": "remVoter",
-              "NextStates": ["Updatevoterstatus"]
-            }
-          ]
-          },
-          {
             "Name": "Generate",
             "DisplayName": "generate ",
             "Description": "generate voter id",
@@ -205,6 +182,29 @@
                     "NextStates": ["Updatevoterstatus"]
                   }
             ]
+          },
+          {
+            "Name": "Addvoter",
+            "DisplayName": "add Voter",
+            "Description": "add voter",
+            "PercentComplete": 100,
+            "Style": "Success",
+            "Transitions": [
+              {
+              "AllowedRoles": ["Voter"],
+              "AllowedInstanceRoles": [],
+              "DisplayName": "generate",
+              "Function": "generate",
+              "NextStates": ["Generate"]
+            },
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": ["ElectionCommission"],
+              "DisplayName": "update voter",
+              "Function": "remVoter",
+              "NextStates": ["Updatevoterstatus"]
+            }
+          ]
           },
           {
             "Name": "Updatevoterstatus",

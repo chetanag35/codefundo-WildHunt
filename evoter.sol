@@ -12,19 +12,21 @@ contract evoter {
         uint256 voterId;
         uint256 age;
     }
-    enum currentState {Initiate, Generate, Display, Addvoter, Updatevoterstatus}
-    currentState public cstate;
-    address public Voter;
+    enum StateType {Initiate, Generate, Addvoter, Updatevoterstatus}
+    StateType public State;
+    //address public Voter;
     voterDetails[] public voters;
     uint256 public no_of_voters;
     uint256 public voterId;
     uint256 public const=1000*60*60*24*365;
     string public str;
     uint256 public i;
+    address public ElectionCommission;
+    address public Voter;
     constructor() public{
         no_of_voters=0;
         voterId=0;
-        cstate=currentState.Initiate;
+        State=StateType.Initiate;
     }
     function generate (uint256 voterid) public{
         for(i=0;i<no_of_voters;i++){
@@ -42,7 +44,7 @@ contract evoter {
             }
             }
         }
-        cstate=currentState.Generate;
+        State=StateType.Generate;
     }
     function addVoter (string memory name, uint256 adhno, string memory father_name, string memory Address, string memory Gender, uint256 birth_year) public {
         no_of_voters++;
@@ -58,7 +60,7 @@ contract evoter {
         newVoter.voterId=voterId;
         newVoter.age=now/(const)-(birth_year-1970);                                                                         //code for age calculation
         voters.push(newVoter);
-        cstate=currentState.Addvoter;
+        State=StateType.Addvoter;
     }
     function remVoter (uint256 voterid) public{
         for(i=0;i<no_of_voters;i++){
@@ -67,6 +69,6 @@ contract evoter {
                 break;
             }
         }
-        cstate=currentState.Updatevoterstatus;
+        State=StateType.Updatevoterstatus;
     }
 }
