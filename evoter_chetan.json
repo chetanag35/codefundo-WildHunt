@@ -29,14 +29,30 @@
             }
           },
           {
+            "Name": "ElectionCommission",
+            "DisplayName": "Election Commission",
+            "Description": "...",
+            "Type": {
+              "Name": "ElectionCommission"
+            }
+          },
+          {
+            "Name": "Voter",
+            "DisplayName": "Voter",
+            "Description": "...",
+            "Type": {
+              "Name": "Voter"
+            }
+          },
+          {
             "Name": "str",
             "DisplayName": "str",
             "Description": "...",
             "Type": {
               "Name": "string"
             }
-          }
-        ],
+          }       
+      ],
         "Constructor": {
           "Parameters": []
         },
@@ -86,34 +102,32 @@
           "Name": "string"
         }
       
-  },
-  {
-    "Name": "Address",
-    "Description": "address",
-    "DisplayName": "address",
-    "Type": {
-      "Name": "string"
-    }
-  
-},
-{
-    "Name": "Gender",
-    "Description": "gender",
-    "DisplayName": "gender",
-    "Type": {
-      "Name": "string"
-    }
-  
-},{
-    "Name": "birth_year",
-    "Description": "birth_year",
-    "DisplayName": "birth year",
-    "Type": {
-      "Name": "int"
-    }
-  
-}]
-          },
+      },
+      {
+        "Name": "Address",
+        "Description": "address",
+        "DisplayName": "address",
+        "Type": {
+          "Name": "string"
+        } 
+      },
+      {
+        "Name": "Gender",
+        "Description": "gender",
+        "DisplayName": "gender",
+        "Type": {
+          "Name": "string"
+        }
+      },
+      {
+        "Name": "birth_year",
+        "Description": "birth_year",
+        "DisplayName": "birth year",
+        "Type": {
+          "Name": "int"
+        }
+      }]
+    },
           {
             "Name": "remVoter",
             "DisplayName": "remove voter",
@@ -138,7 +152,7 @@
             "Style": "Success",
             "Transitions": [
               {
-                "AllowedRoles": ["ElectionCommission"],
+                "AllowedRoles": [],
                 "AllowedInstanceRoles": ["ElectionCommission"],
                 "DisplayName": "Add voter",
                 "Function": "addVoter",
@@ -150,18 +164,18 @@
             "Name": "Addvoter",
             "DisplayName": "add Voter",
             "Description": "add voter",
-            "PercentComplete": 40,
+            "PercentComplete": 100,
             "Style": "Success",
             "Transitions": [
               {
               "AllowedRoles": ["Voter"],
-              "AllowedInstanceRoles": ["Voter"],
+              "AllowedInstanceRoles": [],
               "DisplayName": "generate",
               "Function": "generate",
               "NextStates": ["Generate"]
             },
             {
-              "AllowedRoles": ["ElectionCommission"],
+              "AllowedRoles": [],
               "AllowedInstanceRoles": ["ElectionCommission"],
               "DisplayName": "update voter",
               "Function": "remVoter",
@@ -177,14 +191,14 @@
             "Style": "Success",
             "Transitions": [
                 {
-                    "AllowedRoles": ["ElectionCommission"],
+                    "AllowedRoles": [],
                     "AllowedInstanceRoles": ["ElectionCommission"],
                     "DisplayName": "addVoter",
                     "Function": "addVoter",
                     "NextStates": ["Addvoter"]
                   },
                   {
-                    "AllowedRoles": ["ElectionCommission"],
+                    "AllowedRoles": [],
                     "AllowedInstanceRoles": ["ElectionCommission"],
                     "DisplayName": "update voter",
                     "Function": "remVoter",
@@ -200,7 +214,7 @@
             "Style": "Success",
             "Transitions": [
                 {
-                    "AllowedRoles": ["ElectionCommission"],
+                    "AllowedRoles": [],
                     "AllowedInstanceRoles": ["ElectionCommission"],
                     "DisplayName": "addVoter",
                     "Function": "addVoter",
@@ -208,7 +222,7 @@
                   },
                   {
                     "AllowedRoles": ["Voter"],
-                    "AllowedInstanceRoles": ["Voter"],
+                    "AllowedInstanceRoles": [],
                     "DisplayName": "generate voter",
                     "Function": "generate",
                     "NextStates": ["Generate"]
