@@ -20,13 +20,14 @@ contract evoter {
     uint256 voterId;
     uint256 const=1000*60*60*24*365;
     string str;
+    uint256 i;
     constructor() public{
         no_of_voters=0;
         voterId=0;
         cstate=currentState.Initiate;
     }
     function generate (uint256 voterid) public{
-        for(uint256 i=0;i<no_of_voters;i++){
+        for(i=0;i<no_of_voters;i++){
             if(voters[i].voterId==voterid){
             if(voters[i].isAlive&&voters[i].age>=18)
             {
@@ -60,7 +61,7 @@ contract evoter {
         cstate=currentState.Addvoter;
     }
     function remVoter (uint256 voterid) public{
-        for(uint256 i=0;i<no_of_voters;i++){
+        for(i=0;i<no_of_voters;i++){
             if(voters[i].voterId==voterid){
                 voters[i].isAlive=false;
                 break;
