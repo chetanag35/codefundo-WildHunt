@@ -8,7 +8,7 @@ contract voter {
         string Address;
         bool isAlive;
         string gender;
-        string DoB;
+        int birth_year;   
         int voterId;
         int age;
     }
@@ -18,6 +18,7 @@ contract voter {
     voterDetails[] public voters;
     uint256 no_of_voters;
     uint256 voterId;
+    uint256 const=1000*60*60*24*365;
     string str;
     constructor() public{
         no_of_voters=0;
@@ -41,7 +42,7 @@ contract voter {
         }
         cstate=currentState.Generate;
     }
-    function addVoter (string name, uint64 adhno, string father_name, string Address, bool isAlive, string Gender, string DoB){
+    function addVoter (string name, uint64 adhno, string father_name, string Address, bool isAlive, string Gender, int birth_year){
         no_of_voters++;
         voterId++;
         voterDetails memory newVoter;
@@ -51,9 +52,9 @@ contract voter {
         newVoter.Address=Address;
         newVoter.isAlive=true;
         newVoter.Gender=Gender;
-        newVoter.DoB=DoB;
+        newVoter.birth_year=birth_year;
         newVoter.voterId=voterId;
-        //newVoter.age=//code for age calculation
+        newVoter.age=now/(const)-(birth_year-1970);                                                                         //code for age calculation
         voters.push(newVoter);
         cstate=currentState.Addvoter;
     }
