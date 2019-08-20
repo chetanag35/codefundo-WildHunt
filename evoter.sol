@@ -1,4 +1,4 @@
-pragma solidity ^0.5.1;
+pragma solidity ^0.4.25;
 //import "https://github.com/pipermerriam/ethereum-datetime/blob/master/contracts/DateTime.sol";
 contract evoter {
     struct voterDetails{
