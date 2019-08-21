@@ -27,6 +27,62 @@
             "Type": {
               "Name": "state"
             }
+          },
+          {
+            "Name": "str",
+            "DisplayName": "Result",
+            "Description": "Result of action",
+            "Type": {
+              "Name": "string"
+            }
+          },
+          {
+            "Name": "Name",
+            "DisplayName": "Voter Name",
+            "Description": "Name of the voter",
+            "Type": {
+              "Name": "string"
+            }
+          },
+          {
+            "Name": "FatherName",
+            "DisplayName": "Father's Name",
+            "Description": "Name of Father",
+            "Type": {
+              "Name": "string"
+            }
+          },
+          {
+            "Name": "CurrentAddress",
+            "DisplayName": "Address",
+            "Description": "Address",
+            "Type": {
+              "Name": "string"
+            }
+          },
+          {
+            "Name": "VoterGender",
+            "DisplayName": "Gender",
+            "Description": "Gender",
+            "Type": {
+              "Name": "string"
+            }
+          },
+          {
+            "Name": "BirthYear",
+            "DisplayName": "Birth Year",
+            "Description": "Birth Year",
+            "Type": {
+              "Name": "int"
+            }
+          },
+          {
+            "Name": "Age",
+            "DisplayName": "Age",
+            "Description": "Age",
+            "Type": {
+              "Name": "int"
+            }
           }      
       ], 
         "Constructor": {
@@ -41,7 +97,7 @@
               {
                 "Name": "voterid",
                 "Description": "voterid",
-                "DisplayName": "voterid",
+                "DisplayName": "Aadhar Number",
                 "Type": {
                   "Name": "int"
                 }
@@ -111,7 +167,7 @@
             "Parameters": [{
                 "Name": "voterid",
                 "Description": "voterid",
-                "DisplayName": "voterid",
+                "DisplayName": "Aadhar Number",
                 "Type": {
                   "Name": "int"
                 }
@@ -143,7 +199,13 @@
             "PercentComplete": 100,
             "Style": "Success",
             "Transitions": [
-               
+              {
+                "AllowedRoles": ["ElectionCommission"],
+                "AllowedInstanceRoles": [],
+                "DisplayName": "update voter",
+                "Function": "remVoter",
+                "NextStates": ["Updatevoterstatus"]
+              }
             ]
           },
           {
@@ -176,20 +238,6 @@
             "PercentComplete": 100,
             "Style": "Success",
             "Transitions": [
-                {
-                    "AllowedRoles": ["ElectionCommission"],
-                    "AllowedInstanceRoles": [],
-                    "DisplayName": "addVoter",
-                    "Function": "addVoter",
-                    "NextStates": ["Addvoter"]
-                  },
-                  {
-                    "AllowedRoles": ["Voter"],
-                    "AllowedInstanceRoles": [],
-                    "DisplayName": "generate voter",
-                    "Function": "generate",
-                    "NextStates": ["Generate"]
-                  }
             ]
           }
         ]

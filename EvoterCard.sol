@@ -3,7 +3,7 @@ pragma solidity ^0.4.25;
 contract EvoterCard {
     struct voterDetails{
         string name;
-        uint256 adhno;
+        int adhno;
         string father_name;
         string Address;
         bool isAlive;
@@ -15,6 +15,13 @@ contract EvoterCard {
     enum StateType {Initiate,Generate, Addvoter, Updatevoterstatus}
     StateType public State;
     //address public Voter;
+    string public Name;
+    int public aadharNo;
+    string public FatherName;
+    string public CurrentAddress;
+    string public VoterGender;
+    uint256 public BirthYear;
+    uint256 public Age;
     voterDetails[] public voters;
     uint256 public no_of_voters;
     uint256 public voterId;
@@ -28,12 +35,19 @@ contract EvoterCard {
         voterId=0;
         State=StateType.Initiate;
     }
-    function generate (uint256 voterid) public{
+    function generate (int voterid) public{
         for(i=0;i<no_of_voters;i++){
-            if(voters[i].voterId==voterid){
+            if(voters[i].adhno==voterid){
             if(voters[i].isAlive&&voters[i].age>=18)
             {
                 str="valid voter";
+                Name = voters[i].name;
+                aadharNo = voters[i].adhno;
+                FatherName= voters[i].father_name;
+                CurrentAddress = voters[i].Address;
+                VoterGender = voters[i].gender;
+                BirthYear=voters[i].birth_year;
+                Age = voters[i].age;  
             }
             else if(voters[i].isAlive&&voters[i].age<18)
             {
@@ -46,26 +60,39 @@ contract EvoterCard {
         }
         State=StateType.Generate;
     }
-    function addVoter (string memory name, uint256 adhno, string memory father_name, string memory Address, string memory Gender, uint256 birth_year) public {
+    function addVoter (string memory name, int adhno, string memory father_name, string memory Address, string memory Gender, uint256 birth_year) public {
         no_of_voters++;
         voterId++;
         voterDetails memory newVoter;
         newVoter.name=name;
+        
         newVoter.adhno=adhno;
+        
         newVoter.father_name=father_name;
+        
         newVoter.Address=Address;
         newVoter.isAlive=true;
         newVoter.gender=Gender;
+        
         newVoter.birth_year=birth_year;
+        
         newVoter.voterId=voterId;
-        newVoter.age=now/(const)-(birth_year-1970);                                                                         //code for age calculation
+        newVoter.age= 2019-birth_year;                             //code for age calculation
         voters.push(newVoter);
         State=StateType.Addvoter;
     }
-    function remVoter (uint256 voterid) public{
+    function remVoter (int voterid) public{
         for(i=0;i<no_of_voters;i++){
-            if(voters[i].voterId==voterid){
+            if(voters[i].adhno==voterid){
                 voters[i].isAlive=false;
+                str="Expired Voter";
+                Name = "";
+                aadharNo = 0;
+                FatherName= "";
+                CurrentAddress = "";
+                VoterGender = "";
+                BirthYear=0;
+                Age = 0;  
                 break;
             }
         }
